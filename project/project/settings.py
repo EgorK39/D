@@ -45,6 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
 
     'some.apps.SomeConfig',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.yandex',
+
+    'django_apscheduler',
 ]
 
 SITE_ID = 1
@@ -77,6 +85,13 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+""" django-allauth """
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -135,3 +150,39 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+""" для ImageField """
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+""" django-allauth 
+https://django-allauth.readthedocs.io/en/latest/configuration.html """
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_BLACKLIST = (['hitler'])
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/admin/'  # TODO
+
+"""отправка писем"""
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+email_host_user = os.getenv('email_host_user')
+EMAIL_HOST_USER = email_host_user
+PASSWORD = os.getenv('PASSWORD')
+EMAIL_HOST_PASSWORD = PASSWORD
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# MANAGERS = [('Егор Кущ', 'egor-kulikov@mail.ru'), ] FIXME
+SERVER_EMAIL = EMAIL_HOST_USER
+
+""" django_apscheduler """
+
+APSCHEDULER_DATETIME_FORMAT = 'N j, Y, f:s a'
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
