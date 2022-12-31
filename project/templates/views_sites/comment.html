@@ -1,0 +1,30 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_tags %}
+{% block uname %}
+<a class="navbar-brand" href="#!">{{ user.username }}</a>
+{% endblock uname %}
+
+{% block links %}
+{% if request.user.is_authenticated %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'posts:postcreate' %}">Создать объяление</a></li>
+
+{% endif %}
+{% endblock links %}
+
+
+
+{% block content %}
+{% if comment %}
+
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="small text-muted">{{ comment.time_in }}</div>
+                    <p class="card-text">{{ comment.text }}</p>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'posts:commentdelete' comment.id %}">Удалить</a></li>
+
+                </div>
+            </div>
+
+{% endif %}
+            {% endblock content %}

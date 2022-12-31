@@ -1,0 +1,28 @@
+{% extends 'flatpages/default.html' %}
+<html>
+<head>
+    <title>Регистрация</title>
+</head>
+<body>
+{% block content %}
+<h2 class="fw-bolder">Нас - {{ count }}. Стань и ты нашим клиентом.</h2>
+<div>
+    <strong>Menu:</strong>
+    <ul>
+        <li><a href="/accounts/login/">Sign In</a></li>
+        <li><a href="/accounts/signup/">Sign Up</a></li>
+    </ul>
+</div>
+
+<h1>Регистрация</h1>
+
+<p>Уже зарегистрированы? <a href="/accounts/login/">Войдите</a>.</p>
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Регистрация »</button>
+</form>
+{% endblock content %}
+</body>
+</html>

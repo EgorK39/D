@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+
+<h1>Новый отклик</h1>
+{% for comm in comment %}
+Автор - {{ comm.user }} <br>
+{{ comm.text }} <br><br>
+{% endfor %}
+<form action="" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Опубликовать">
+</form>
+
+{% endblock content %}
+
+

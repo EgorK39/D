@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
 
     'some.apps.SomeConfig',
+    'accounts',
 
     'allauth',
     'allauth.account',
@@ -53,6 +54,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
 
     'django_apscheduler',
+
+    'django_filters',
 ]
 
 SITE_ID = 1
@@ -166,7 +169,10 @@ ACCOUNT_USERNAME_BLACKLIST = (['hitler'])
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/admin/'  # TODO
+ACCOUNT_FORMS = {'signup': 'accounts.forms.MyCustomSignupForm'}  # подключаю её в settings.py
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 60  # Количество попыток входа в систему я оставляю по умолчанию (равное 5), но время таймаута ограничиваю до 60 секунд
+
+LOGIN_REDIRECT_URL = 'posts:posts'  # TODO
 
 """отправка писем"""
 

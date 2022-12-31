@@ -9,6 +9,7 @@ defusedxml==0.7.1
 Django==4.1.4
 django-allauth==0.51.0
 django-apscheduler==0.6.2
+django-filter==22.1
 idna==3.4
 oauthlib==3.2.2
 Pillow==9.3.0

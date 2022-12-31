@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<h2>У Вас имеется новый отклик на Ваше объявление - {{ post_title }} !</h2>
+<p> Текст отклика: {{ text }}
+</p>
+<p>Дата создания Вашего объявления {{ post.time_in }}</p>
+<p><a href='posts/{{ id_obj }}/comment/'>Ссылка</a> на отклик</p>
+</body>
+</html>

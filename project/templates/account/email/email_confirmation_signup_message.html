@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>ПОдстверждение</title>
 </head>
 <body>
 {% load account %}
-<h1>Thank you for registering {{ user.username }}!</h1>
-<h3>Please follow <a href="{{ activate_url }}">the link</a> to activate
-your account</h3>
+<h1>{{ user.first_name }}, спасибо, что выбрали нашу пратформу!</h1>
+<h3>Для активации аккаунта пройдите, пожалуйста, по <a href="{{ activate_url }}">ссылке</a></h3>
 
 </body>
 </html>
